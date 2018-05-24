@@ -1,12 +1,15 @@
 pragma solidity ^0.4.18;
 
 import './Calendar.sol';
+/*
+FUNCTIONS STILL NEED TO BE PERMISSIONED 
+*/
 
 contract CalendarFactory {
   // a struct containing a calendar contract plus pointer to keep track of it in array
   struct CalendarStruct {
     Calendar cal;
-    uint listPointer;
+    uint index;
   }
   // this maps the addresses of the OWNERS of each calendar
   mapping (address => CalendarStruct) public calendars;
@@ -19,12 +22,12 @@ contract CalendarFactory {
 
   // checks if a user with a given address already has a calendar
   function hasCalendar (address calendarOwnerAddress) public constant returns (bool isIndeed) {
-    if(calendarsList.length == 0) return false;
-    return (calendarsList[calendars[calendarOwnerAddress].listPointer] == calendarOwnerAddress);
+    if (calendarsList.length == 0) return false;
+    return (calendarsList[calendars[calendarOwnerAddress].index] == calendarOwnerAddress);
   }
 
   // Returns the count of calendars stored in calendarsList array
-  function getCalendarCount() public constant returns (uint){
+  function getCalendarCount() public constant returns (uint) {
     return calendarsList.length;
   }
 
@@ -32,7 +35,7 @@ contract CalendarFactory {
     // user can only have 1 calendar per address
     if (hasCalendar(calendarOwnerAddress)) revert();
     calendars[calendarOwnerAddress].cal = new Calendar(calendarOwnerAddress);
-    calendars[calendarOwnerAddress].listPointer = calendarsList.push(calendarOwnerAddress) - 1;
+    calendars[calendarOwnerAddress].index = calendarsList.push(calendarOwnerAddress) - 1;
     emit NewCalendarAdded (calendarOwnerAddress);
     return true;
   }
@@ -43,11 +46,11 @@ contract CalendarFactory {
     // ONLY THE OWNER OF A CALENDAR CAN DELETE IT!!!
     if (calendarOwnerAddress != msg.sender) revert();
 
-    uint rowToDelete = calendars[calendarOwnerAddress].listPointer;
+    uint rowToDelete = calendars[calendarOwnerAddress].index;
     address keyToMove = calendarsList[calendarsList.length - 1];
 
     calendarsList[rowToDelete] = keyToMove;
-    calendars[keyToMove].listPointer = rowToDelete;
+    calendars[keyToMove].index = rowToDelete;
     calendarsList.length--;
 
     emit CalendarDeleted (calendarOwnerAddress);
