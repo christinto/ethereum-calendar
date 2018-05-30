@@ -114,4 +114,40 @@ contract('Calendar', accounts => {
       //console.log(result);
     })
   })
+
+  it("getter function works", () => {
+    let calendar;
+    return Calendar.deployed().then(instance => {
+      calendar = instance;
+      //return calendar.createNewCalendarEvent('sample event 3', false, 600, 800, 'menial bs', { from: accounts[0] });
+      //function getCalendarEvent (uint idToGet) public ownerOnly constant returns (bytes32 title, bool allDay, uint start, uint end, bytes32 desc, uint index)
+      return calendar.getCalendarEvent(1002);
+    }).then((result) => {
+      //console.log(web3.toAscii(result[0]));
+      assert.equal(web3.toAscii(result[0]).replace(/\u0000/g, ''), 'sample event 3');
+      assert.equal(result[1], false);
+      assert.equal(result[2].toNumber(), 600);
+      assert.equal(result[3].toNumber(), 800);
+      assert.equal(web3.toAscii(result[4]).replace(/\u0000/g, ''), 'menial bs');
+      // so this part not be ideal
+      assert.isOk(result[5].toNumber());
+    })
+  })
+
+  it("update function function works", () => {
+    let calendar;
+    return Calendar.deployed().then(instance => {
+      calendar = instance;
+      //return calendar.createNewCalendarEvent('sample event 3', false, 600, 800, 'menial bs', { from: accounts[0] });
+      //function updateCalendarEvent (uint idToUpdate, bytes32 title, bool allDay, uint start, uint end, bytes32 desc) public ownerOnly returns (bool success) {
+      return calendar.updateCalendarEvent(1002, 'updated sample event', false, 600, 800, 'menial bs');
+    }).then((result) => {
+      //console.log('update result:', result);
+      // reverts here?
+      return calendar.getCalendarEvent(1002);
+    }).then((result) => {
+      //console.log('get result: ', result);
+      assert.equal(web3.toAscii(result[0]).replace(/\u0000/g, ''), 'updated sample event');
+    })
+  })
 });

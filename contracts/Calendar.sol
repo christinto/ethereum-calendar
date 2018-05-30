@@ -57,17 +57,7 @@ contract Calendar {
   function getCalendarEventsCount() public constant returns (uint) {
     return calendarEventsList.length;
   }
-  /*
-  function createNewCalendar (address calendarOwnerAddress) public returns (bool success) {
-    // user can only have 1 calendar per address
-    if (hasCalendar(calendarOwnerAddress)) revert();
-    calendars[calendarOwnerAddress].cal = new Calendar(calendarOwnerAddress);
-    calendars[calendarOwnerAddress].index = calendarsList.push(calendarOwnerAddress) - 1;
-    emit NewCalendarAdded (calendarOwnerAddress);
-    return true;
-  }
-  */
-
+  // CRUD
   function createNewCalendarEvent (bytes32 title, bool allDay, uint start, uint end, bytes32 desc) public ownerOnly returns (bool success) {
     // a unique id is assigned to each new calendar event. we dont need to check that an event with this id already exists since
     // the id has nothing to do with the properties of the new calendar event
@@ -86,6 +76,37 @@ contract Calendar {
 
     emit NewCalendarEventAdded (idCounter);
     idCounter++;
+    return true;
+  }
+
+  function getCalendarEvent (uint idToGet) public ownerOnly constant returns (bytes32 title, bool allDay, uint start, uint end, bytes32 desc, uint index) {
+    //make sure its actually an event
+    if (!eventExists(idToGet)) revert();
+
+    return (
+      calendarEvents[idToGet].title,
+      calendarEvents[idToGet].allDay,
+      calendarEvents[idToGet].start,
+      calendarEvents[idToGet].end,
+      calendarEvents[idToGet].desc,
+      calendarEvents[idToGet].index);
+  }
+
+  function updateCalendarEvent (uint idToUpdate, bytes32 title, bool allDay, uint start, uint end, bytes32 desc) public ownerOnly returns (bool success) {
+    //make sure its actually an event
+    if (!eventExists(idToUpdate)) revert();
+
+    CalendarEvent memory updatedCalendarEvent;
+
+    updatedCalendarEvent.title = title;
+    updatedCalendarEvent.allDay = allDay;
+    updatedCalendarEvent.start = start;
+    updatedCalendarEvent.end = end;
+    updatedCalendarEvent.desc = desc;
+    updatedCalendarEvent.index = calendarEvents[idToUpdate].index;
+
+    calendarEvents[idToUpdate] = updatedCalendarEvent;
+
     return true;
   }
 

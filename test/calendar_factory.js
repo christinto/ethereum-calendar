@@ -74,5 +74,23 @@ contract('CalendarFactory', accounts => {
       //console.log(result);
     })
   })
-
+  /*
+  it("a user can delete their calendar", () => {
+    let calendar_factory;
+    return CalendarFactory.deployed().then(instance => {
+      calendar_factory = instance;
+      return calendar_factory.deleteCalendar(accounts[0], { from: accounts[0] });
+    }).then((result) => {
+      //console.log(result);
+      assert.equal(result.logs[0].event, 'CalendarDeleted');
+    }).then(() => {
+      return calendar_factory.getCalendarCount();
+    }).then((result) => {
+      //console.log((result));
+      assert.equal(result.toNumber(), 0);
+      //console.log(result.toNumber());
+      //console.log(result);
+    })
+  })
+  */
 });
