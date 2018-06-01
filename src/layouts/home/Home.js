@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-//import { AccountData, ContractData, ContractForm } from 'drizzle-react-components'
+import { AccountData, ContractData, ContractForm } from 'drizzle-react-components'
 //import logo from '../../logo.png'
 
 import Calendar from "react-big-calendar";
@@ -18,6 +18,20 @@ class Home extends Component {
           <div className="pure-u-1-1 header">
             <img src={logo} className="App-logo" alt="logo" />
             <h1 className="App-title">Ethereum Calendar</h1>
+          </div>
+
+          <div className="pure-u-1-1">
+            <h2>Active Account</h2>
+            <AccountData accountIndex="0" units="ether" precision="2" />
+
+            <br/><br/>
+          </div>
+
+          <div className="pure-u-1-1">
+            <h2>Add Event to Calendar</h2>
+            <ContractForm contract="Calendar" method="createNewCalendarEvent" labels={['Title', 'All day?', 'Start', 'End', 'Description']}/>
+
+            <br/><br/>
           </div>
 
           <div className="pure-u-1-1">
