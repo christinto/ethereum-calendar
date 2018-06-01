@@ -60,15 +60,6 @@ class Home extends Component {
 
             <br/><br/>
           </div>
-
-          <div className="pure-u-1-1">
-            <Calendar
-              defaultDate={new Date()}
-              defaultView="month"
-              events={[]} // what to make this
-              style={{ height: "100vh" }}
-            />
-          </div>
         </div>
       </main>
     )
