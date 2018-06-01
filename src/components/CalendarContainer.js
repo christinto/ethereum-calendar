@@ -44,18 +44,7 @@ class CalendarContainer extends Component {
       )
     }
 
-    console.log('calendar events keys', this.calendarEventsDataKeys);
-
-    let eventObjectsRaw = this.calendarEventsDataKeys.map(key => {
-      // start and end need to be converted to Date objects
-      // id needs to match the same one from the eventIds prop
-      //id: this.props.contracts["Calendar"]["getCalendarEvent"][key].value.title,
-      return (
-          this.props.contracts["Calendar"]["getCalendarEvent"][key].value
-      )
-    })
-
-    console.log('raw event objects: ', eventObjectsRaw);
+    //console.log('calendar events keys', this.calendarEventsDataKeys);
 
     // save the event data into an array of objects
     let eventObjects = this.calendarEventsDataKeys.map(key => {
@@ -64,6 +53,7 @@ class CalendarContainer extends Component {
       //id: this.props.contracts["Calendar"]["getCalendarEvent"][key].value.title,
       return (
         {
+          id: this.props.contracts["Calendar"]["getCalendarEvent"][key].value.id,
           title: this.props.contracts["Calendar"]["getCalendarEvent"][key].value.title,
           start: new Date(this.props.contracts["Calendar"]["getCalendarEvent"][key].value.start * 1000),
           end: new Date(this.props.contracts["Calendar"]["getCalendarEvent"][key].value.end * 1000),
@@ -72,7 +62,7 @@ class CalendarContainer extends Component {
       )
     })
 
-    console.log('event objects: ', eventObjects);
+    //console.log('event objects: ', eventObjects);
 
     return (
       <div className="pure-u-1-1">

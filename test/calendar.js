@@ -124,13 +124,14 @@ contract('Calendar', accounts => {
       return calendar.getCalendarEvent(1002);
     }).then((result) => {
       //console.log(web3.toAscii(result[0]));
-      assert.equal(result[0], 'sample event 3');
+      assert.equal(result[0].toNumber(), 1002);
+      assert.equal(result[1], 'sample event 3');
       //assert.equal(result[1], false);
-      assert.equal(result[1].toNumber(), 600);
-      assert.equal(result[2].toNumber(), 800);
-      assert.equal(result[3], 'menial bs');
+      assert.equal(result[2].toNumber(), 600);
+      assert.equal(result[3].toNumber(), 800);
+      assert.equal(result[4], 'menial bs');
       // so this part not be ideal
-      assert.isOk(result[4].toNumber());
+      assert.isOk(result[5].toNumber());
     })
   })
 
@@ -147,7 +148,7 @@ contract('Calendar', accounts => {
       return calendar.getCalendarEvent(1002);
     }).then((result) => {
       //console.log('get result: ', result);
-      assert.equal(result[0], 'updated sample event');
+      assert.equal(result[1], 'updated sample event');
       //console.log(result[5].toNumber());
     })
   })

@@ -79,11 +79,12 @@ contract Calendar {
     return true;
   }
   // Is this one even necessary?? YES
-  function getCalendarEvent (uint idToGet) public ownerOnly constant returns (string title, uint start, uint end, string desc, uint index) {
+  function getCalendarEvent (uint idToGet) public ownerOnly constant returns (uint id, string title, uint start, uint end, string desc, uint index) {
     //make sure its actually an event
     if (!eventExists(idToGet)) revert();
 
     return (
+      idToGet,
       calendarEvents[idToGet].title,
       //calendarEvents[idToGet].allDay,
       calendarEvents[idToGet].start,
