@@ -7,7 +7,7 @@ import Calendar from "react-big-calendar";
 import moment from "moment";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import logo from "../../ethereumlogo.svg";
+//import logo from "../../ethereumlogo.svg";
 
 Calendar.setLocalizer(Calendar.momentLocalizer(moment));
 
@@ -42,13 +42,6 @@ class Home extends Component {
           </div>
 
           <div className="pure-u-1-1">
-            <h2>A Calendar Event</h2>
-            <ContractData contract="Calendar" method="getCalendarEvent" methodArgs={[1000]} />
-
-            <br/><br/>
-          </div>
-
-          <div className="pure-u-1-1">
             <h2>Update Calendar Event</h2>
             <ContractForm contract="Calendar" method="updateCalendarEvent" labels={['id', 'Title', 'Start', 'End', 'Description']}/>
 
@@ -63,6 +56,13 @@ class Home extends Component {
           </div>
 
           <div className="pure-u-1-1">
+            <h2>List of Calendar Events</h2>
+            <EventsList />
+
+            <br/><br/>
+          </div>
+
+          <div className="pure-u-1-1">
             <Calendar
               defaultDate={new Date()}
               defaultView="month"
@@ -70,7 +70,6 @@ class Home extends Component {
               style={{ height: "100vh" }}
             />
           </div>
-          <EventsList />
         </div>
       </main>
     )
