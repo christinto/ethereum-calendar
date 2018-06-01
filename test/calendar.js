@@ -151,4 +151,16 @@ contract('Calendar', accounts => {
       //console.log(result[5].toNumber());
     })
   })
+
+  it("getAllCalendarEvents works", () => {
+    let calendar;
+    return Calendar.deployed().then(instance => {
+      calendar = instance;
+      //return calendar.createNewCalendarEvent('sample event 3', false, 600, 800, 'menial bs', { from: accounts[0] });
+      //function updateCalendarEvent (uint idToUpdate, bytes32 title, bool allDay, uint start, uint end, bytes32 desc) public ownerOnly returns (bool success) {
+      return calendar.getAllCalendarEvents.call();
+    }).then((result) => {
+      console.log(result.map(index => index.toNumber()));
+    })
+  })
 });

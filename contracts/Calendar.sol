@@ -92,6 +92,10 @@ contract Calendar {
       calendarEvents[idToGet].index);
   }
 
+  function getAllCalendarEvents () public ownerOnly constant returns (uint[]) {
+    return calendarEventsList;
+  }
+
   function updateCalendarEvent (uint idToUpdate, string title, uint start, uint end, string desc) public ownerOnly returns (bool success) {
     //make sure its actually an event
     if (!eventExists(idToUpdate)) revert();
