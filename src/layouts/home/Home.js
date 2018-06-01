@@ -56,7 +56,6 @@ class Home extends Component {
           </div>
 
           <div className="pure-u-1-1">
-            <h2>List of Calendar Events</h2>
             <EventsList />
 
             <br/><br/>

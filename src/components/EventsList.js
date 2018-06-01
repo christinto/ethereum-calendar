@@ -32,12 +32,17 @@ class EventsList extends Component {
         <span>Fetching...</span>
       )
     }
+
+    // Show a loading spinner for future updates.
+    var pendingSpinner = this.props.contracts["Calendar"].synced ? '' : ' 🔄'
+
     // use cache key to save events ids to array
     let eventIds = this.props.contracts["Calendar"]["getAllCalendarEvents"][this.calendarEventsListDataKey].value;
     //console.log('event ids: ', eventIds);
 
     return (
       <div className="EventssList">
+        <h2>List of Calendar Events {pendingSpinner}</h2> 
         { eventIds.map(id =>
           <li key={id} >
             <p><strong>Event {id}:</strong></p>
