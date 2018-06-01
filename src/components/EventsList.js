@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { ContractData } from 'drizzle-react-components'
+import CalendarContainer from './CalendarContainerContainer'
 
 /*
  * Create component.
@@ -38,17 +38,10 @@ class EventsList extends Component {
 
     // use cache key to save events ids to array
     let eventIds = this.props.contracts["Calendar"]["getAllCalendarEvents"][this.calendarEventsListDataKey].value;
-    //console.log('event ids: ', eventIds);
 
     return (
-      <div className="EventssList">
-        <h2>List of Calendar Events {pendingSpinner}</h2> 
-        { eventIds.map(id =>
-          <li key={id} >
-            <p><strong>Event {id}:</strong></p>
-            <ContractData contract="Calendar" method="getCalendarEvent" methodArgs={[id]} />
-          </li>
-        ) }
+      <div className="CalendarContainer">
+        <CalendarContainer eventIds={ eventIds } />
       </div>
     );
   }
