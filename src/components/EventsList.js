@@ -74,8 +74,11 @@ EventsList.contextTypes = {
 
 /*
  * Export connected component.
+ try moving this stuff to container component
  */
 
+
+/*
 const mapStateToProps = state => {
   return {
     contracts: state.contracts
@@ -83,3 +86,5 @@ const mapStateToProps = state => {
 }
 
 export default drizzleConnect(EventsList, mapStateToProps)
+*/
+export default EventsList;

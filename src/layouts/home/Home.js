@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { AccountData, ContractForm, ContractData } from 'drizzle-react-components'
 //import { AccountData, ContractForm, ContractData, EventsList } from '../../components/index.js'
-import { EventsList } from '../../components/EventsListContainer.js'
+import EventsList from '../../components/EventsListContainer'
 //import { EventsList } from '../../components/EventsList.js'
 //import logo from '../../logo.png'
 
