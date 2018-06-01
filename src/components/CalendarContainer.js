@@ -44,16 +44,29 @@ class CalendarContainer extends Component {
       )
     }
 
+    console.log('calendar events keys', this.calendarEventsDataKeys);
+
+    let eventObjectsRaw = this.calendarEventsDataKeys.map(key => {
+      // start and end need to be converted to Date objects
+      // id needs to match the same one from the eventIds prop
+      //id: this.props.contracts["Calendar"]["getCalendarEvent"][key].value.title,
+      return (
+          this.props.contracts["Calendar"]["getCalendarEvent"][key].value
+      )
+    })
+
+    console.log('raw event objects: ', eventObjectsRaw);
+
     // save the event data into an array of objects
     let eventObjects = this.calendarEventsDataKeys.map(key => {
+      // start and end need to be converted to Date objects
+      // id needs to match the same one from the eventIds prop
+      //id: this.props.contracts["Calendar"]["getCalendarEvent"][key].value.title,
       return (
         {
-          // id needs to match the same one from the eventIds prop
-          id: this.props.contracts["Calendar"]["getCalendarEvent"][key].value.title,
           title: this.props.contracts["Calendar"]["getCalendarEvent"][key].value.title,
-          // start and end need to be converted to Date objects
-          start: this.props.contracts["Calendar"]["getCalendarEvent"][key].value.start,
-          end: this.props.contracts["Calendar"]["getCalendarEvent"][key].value.end,
+          start: new Date(this.props.contracts["Calendar"]["getCalendarEvent"][key].value.start * 1000),
+          end: new Date(this.props.contracts["Calendar"]["getCalendarEvent"][key].value.end * 1000),
           desc: this.props.contracts["Calendar"]["getCalendarEvent"][key].value.desc,
         }
       )
