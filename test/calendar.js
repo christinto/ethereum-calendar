@@ -7,7 +7,7 @@ contract('Calendar', accounts => {
     assert.isTrue(true);
     done();
   });
-  // calendar deployed by this address 0x229388615cab46530FDea0cad926ab12BcFF1c82
+  // calendar deployed by this address '0x19187922a70b9ae5a67fd39471065fd9e14c8cf4'
   // this is the accounts[0] address
 
   it("getCalendarEventsCount() returns 0 to begin with", () => {
