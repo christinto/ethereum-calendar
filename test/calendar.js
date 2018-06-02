@@ -26,7 +26,7 @@ contract('Calendar', accounts => {
     let calendar;
     return Calendar.deployed().then(instance => {
       calendar = instance;
-      return calendar.createNewCalendarEvent('sample event', false, 600, 800, 'menial bs', { from: accounts[0] });
+      return calendar.createNewCalendarEvent('sample event', 600, 800, 'menial bs', { from: accounts[0] });
     }).then((result) => {
       assert.equal(result.logs[0].event, 'NewCalendarEventAdded');
     }).then(() => {
@@ -54,7 +54,7 @@ contract('Calendar', accounts => {
     let calendar;
     return Calendar.deployed().then(instance => {
       calendar = instance;
-      return calendar.createNewCalendarEvent('imposter event', false, 600, 800, 'menial bs', { from: accounts[1] });
+      return calendar.createNewCalendarEvent('imposter event', 600, 800, 'menial bs', { from: accounts[1] });
     })
     // it should revert here
   })
@@ -63,7 +63,7 @@ contract('Calendar', accounts => {
     let calendar;
     return Calendar.deployed().then(instance => {
       calendar = instance;
-      return calendar.createNewCalendarEvent('sample event 2', false, 600, 800, 'menial bs', { from: accounts[0] });
+      return calendar.createNewCalendarEvent('sample event 2', 600, 800, 'menial bs', { from: accounts[0] });
     }).then((result) => {
       assert.equal(result.logs[0].args.id.toNumber(), 1001);
     }).then(() => {
@@ -102,7 +102,7 @@ contract('Calendar', accounts => {
     let calendar;
     return Calendar.deployed().then(instance => {
       calendar = instance;
-      return calendar.createNewCalendarEvent('sample event 3', false, 600, 800, 'menial bs', { from: accounts[0] });
+      return calendar.createNewCalendarEvent('sample event 3', 600, 800, 'menial bs', { from: accounts[0] });
     }).then((result) => {
       assert.equal(result.logs[0].args.id.toNumber(), 1002);
     }).then(() => {
@@ -125,12 +125,12 @@ contract('Calendar', accounts => {
     }).then((result) => {
       //console.log(web3.toAscii(result[0]));
       assert.equal(result[0], 'sample event 3');
-      assert.equal(result[1], false);
-      assert.equal(result[2].toNumber(), 600);
-      assert.equal(result[3].toNumber(), 800);
-      assert.equal(result[4], 'menial bs');
+      //assert.equal(result[1], false);
+      assert.equal(result[1].toNumber(), 600);
+      assert.equal(result[2].toNumber(), 800);
+      assert.equal(result[3], 'menial bs');
       // so this part not be ideal
-      assert.isOk(result[5].toNumber());
+      assert.isOk(result[4].toNumber());
     })
   })
 
@@ -140,7 +140,7 @@ contract('Calendar', accounts => {
       calendar = instance;
       //return calendar.createNewCalendarEvent('sample event 3', false, 600, 800, 'menial bs', { from: accounts[0] });
       //function updateCalendarEvent (uint idToUpdate, bytes32 title, bool allDay, uint start, uint end, bytes32 desc) public ownerOnly returns (bool success) {
-      return calendar.updateCalendarEvent(1002, 'updated sample event', false, 600, 800, 'menial bs');
+      return calendar.updateCalendarEvent(1002, 'updated sample event', 600, 800, 'menial bs');
     }).then((result) => {
       //console.log('update result:', result);
       // reverts here?

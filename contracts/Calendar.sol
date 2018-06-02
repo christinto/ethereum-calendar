@@ -16,7 +16,7 @@ contract Calendar {
     //uint id;
     // dynamic types can't be passed between contracts use string instead of string
     string title;
-    bool allDay;
+    //bool allDay;
     uint start;
     uint end;
     string desc;
@@ -58,14 +58,14 @@ contract Calendar {
     return calendarEventsList.length;
   }
   // CRUD
-  function createNewCalendarEvent (string title, bool allDay, uint start, uint end, string desc) public ownerOnly returns (bool success) {
+  function createNewCalendarEvent (string title, uint start, uint end, string desc) public ownerOnly returns (bool success) {
     // a unique id is assigned to each new calendar event. we dont need to check that an event with this id already exists since
     // the id has nothing to do with the properties of the new calendar event
     //if (eventExists(id)) revert();
     CalendarEvent memory newCalendarEvent;
 
     newCalendarEvent.title = title;
-    newCalendarEvent.allDay = allDay;
+    //newCalendarEvent.allDay = allDay;
     newCalendarEvent.start = start;
     newCalendarEvent.end = end;
     newCalendarEvent.desc = desc;
@@ -79,27 +79,27 @@ contract Calendar {
     return true;
   }
 
-  function getCalendarEvent (uint idToGet) public ownerOnly constant returns (string title, bool allDay, uint start, uint end, string desc, uint index) {
+  function getCalendarEvent (uint idToGet) public ownerOnly constant returns (string title, uint start, uint end, string desc, uint index) {
     //make sure its actually an event
     if (!eventExists(idToGet)) revert();
 
     return (
       calendarEvents[idToGet].title,
-      calendarEvents[idToGet].allDay,
+      //calendarEvents[idToGet].allDay,
       calendarEvents[idToGet].start,
       calendarEvents[idToGet].end,
       calendarEvents[idToGet].desc,
       calendarEvents[idToGet].index);
   }
 
-  function updateCalendarEvent (uint idToUpdate, string title, bool allDay, uint start, uint end, string desc) public ownerOnly returns (bool success) {
+  function updateCalendarEvent (uint idToUpdate, string title, uint start, uint end, string desc) public ownerOnly returns (bool success) {
     //make sure its actually an event
     if (!eventExists(idToUpdate)) revert();
 
     CalendarEvent memory updatedCalendarEvent;
 
     updatedCalendarEvent.title = title;
-    updatedCalendarEvent.allDay = allDay;
+    //updatedCalendarEvent.allDay = allDay;
     updatedCalendarEvent.start = start;
     updatedCalendarEvent.end = end;
     updatedCalendarEvent.desc = desc;

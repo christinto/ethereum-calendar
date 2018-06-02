@@ -28,21 +28,22 @@ class Home extends Component {
           </div>
 
           <div className="pure-u-1-1">
-            <h2>Add Event to Calendar</h2>
-            <ContractForm contract="Calendar" method="createNewCalendarEvent" labels={['Title', 'All day?', 'Start', 'End', 'Description']}/>
-
-            <br/><br/>
-          </div>
-
-          <div className="pure-u-1-1">
             <p><strong>Calendar events count</strong>: <ContractData contract="Calendar" method="getCalendarEventsCount" /></p>
 
             <br/><br/>
           </div>
 
           <div className="pure-u-1-1">
+            <h2>Add Event to Calendar</h2>
+            <ContractForm contract="Calendar" method="createNewCalendarEvent" labels={['Title', 'Start', 'End', 'Description']}/>
+
+            <br/><br/>
+          </div>
+
+
+          <div className="pure-u-1-1">
             <h2>Update Calender Event</h2>
-            <ContractForm contract="Calendar" method="updateCalendarEvent" labels={['id', 'Title', 'All day?', 'Start', 'End', 'Description']}/>
+            <ContractForm contract="Calendar" method="updateCalendarEvent" labels={['id', 'Title', 'Start', 'End', 'Description']}/>
 
             <br/><br/>
           </div>
