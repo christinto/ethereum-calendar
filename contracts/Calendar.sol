@@ -14,12 +14,12 @@ contract Calendar {
   // this event format matches the format of the React frontend, plus a index pointer
   struct CalendarEvent {
     //uint id;
-    // dynamic types can't be passed between contracts use bytes32 instead of string
-    bytes32 title;
+    // dynamic types can't be passed between contracts use string instead of string
+    string title;
     bool allDay;
     uint start;
     uint end;
-    bytes32 desc;
+    string desc;
     uint index;
   }
 
@@ -58,7 +58,7 @@ contract Calendar {
     return calendarEventsList.length;
   }
   // CRUD
-  function createNewCalendarEvent (bytes32 title, bool allDay, uint start, uint end, bytes32 desc) public ownerOnly returns (bool success) {
+  function createNewCalendarEvent (string title, bool allDay, uint start, uint end, string desc) public ownerOnly returns (bool success) {
     // a unique id is assigned to each new calendar event. we dont need to check that an event with this id already exists since
     // the id has nothing to do with the properties of the new calendar event
     //if (eventExists(id)) revert();
@@ -79,7 +79,7 @@ contract Calendar {
     return true;
   }
 
-  function getCalendarEvent (uint idToGet) public ownerOnly constant returns (bytes32 title, bool allDay, uint start, uint end, bytes32 desc, uint index) {
+  function getCalendarEvent (uint idToGet) public ownerOnly constant returns (string title, bool allDay, uint start, uint end, string desc, uint index) {
     //make sure its actually an event
     if (!eventExists(idToGet)) revert();
 
@@ -92,7 +92,7 @@ contract Calendar {
       calendarEvents[idToGet].index);
   }
 
-  function updateCalendarEvent (uint idToUpdate, bytes32 title, bool allDay, uint start, uint end, bytes32 desc) public ownerOnly returns (bool success) {
+  function updateCalendarEvent (uint idToUpdate, string title, bool allDay, uint start, uint end, string desc) public ownerOnly returns (bool success) {
     //make sure its actually an event
     if (!eventExists(idToUpdate)) revert();
 

@@ -3,5 +3,5 @@ var Calendar = artifacts.require("./Calendar.sol");
 
 module.exports = function(deployer) {
   deployer.deploy(CalendarFactory);
-  deployer.deploy(Calendar, '0x229388615cab46530FDea0cad926ab12BcFF1c82');
+  deployer.deploy(Calendar, '0x19187922a70b9ae5a67fd39471065fd9e14c8cf4');
 };
