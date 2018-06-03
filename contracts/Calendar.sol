@@ -25,7 +25,7 @@ contract Calendar {
 
   // this maps the id of each calendar, uint is just an id number
   mapping (uint => CalendarEvent) public calendarEvents;
-  // addresses of the owners of the calendars
+  // ids of the calendars
   uint[] public calendarEventsList;
 
   // event for new calendar events
@@ -78,7 +78,7 @@ contract Calendar {
     idCounter++;
     return true;
   }
-
+  // Is this one even necessary?? YES
   function getCalendarEvent (uint idToGet) public ownerOnly constant returns (string title, uint start, uint end, string desc, uint index) {
     //make sure its actually an event
     if (!eventExists(idToGet)) revert();

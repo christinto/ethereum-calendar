@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { AccountData, ContractData, ContractForm } from 'drizzle-react-components'
+//import { AccountData, ContractForm, ContractData } from 'drizzle-react-components'
+import { AccountData, ContractForm, ContractData, EventsList } from '../../components/index.js'
 //import logo from '../../logo.png'
+
 
 import Calendar from "react-big-calendar";
 import moment from "moment";
@@ -11,6 +13,7 @@ import logo from "../../ethereumlogo.svg";
 Calendar.setLocalizer(Calendar.momentLocalizer(moment));
 
 class Home extends Component {
+
   render() {
     return (
       <main className="container">
@@ -40,16 +43,22 @@ class Home extends Component {
             <br/><br/>
           </div>
 
+          <div className="pure-u-1-1">
+            <h2>A Calendar Event</h2>
+            <ContractData contract="Calendar" method="getCalendarEvent" methodArgs={[1002]} />
+
+            <br/><br/>
+          </div>
 
           <div className="pure-u-1-1">
-            <h2>Update Calender Event</h2>
+            <h2>Update Calendar Event</h2>
             <ContractForm contract="Calendar" method="updateCalendarEvent" labels={['id', 'Title', 'Start', 'End', 'Description']}/>
 
             <br/><br/>
           </div>
 
           <div className="pure-u-1-1">
-            <h2>Delete Calender Event</h2>
+            <h2>Delete Calendar Event</h2>
             <ContractForm contract="Calendar" method="deleteCalendarEvent" labels={['id']}/>
 
             <br/><br/>
@@ -63,6 +72,7 @@ class Home extends Component {
               style={{ height: "100vh" }}
             />
           </div>
+          <EventsList />
         </div>
       </main>
     )
