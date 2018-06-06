@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { AccountData, ContractForm, ContractData } from 'drizzle-react-components'
 import EventsList from '../../components/EventsListContainer'
+import EventForm from '../../components/EventFormContainer'
 
 
 import Calendar from "react-big-calendar";
@@ -36,14 +37,14 @@ class Home extends Component {
 
           <div className="pure-u-1-1">
             <h2>Add Event to Calendar</h2>
-            <ContractForm contract="Calendar" method="createNewCalendarEvent" labels={['Title', 'Start', 'End', 'Description']}/>
+            <EventForm contract="Calendar" method="createNewCalendarEvent" labels={['Title', 'Start', 'End', 'Description']}/>
 
             <br/><br/>
           </div>
 
           <div className="pure-u-1-1">
             <h2>Update Calendar Event</h2>
-            <ContractForm contract="Calendar" method="updateCalendarEvent" labels={['id', 'Title', 'Start', 'End', 'Description']}/>
+            <EventForm contract="Calendar" method="updateCalendarEvent" labels={['id', 'Title', 'Start', 'End', 'Description']}/>
 
             <br/><br/>
           </div>

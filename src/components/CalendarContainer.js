@@ -44,6 +44,9 @@ class CalendarContainer extends Component {
       )
     }
 
+    // Show a loading spinner for future updates.
+    var pendingSpinner = this.props.contracts["Calendar"].synced ? '' : ' 🔄'
+
     //console.log('calendar events keys', this.calendarEventsDataKeys);
 
     // save the event data into an array of objects
@@ -66,6 +69,7 @@ class CalendarContainer extends Component {
 
     return (
       <div className="pure-u-1-1">
+        { pendingSpinner }
         <Calendar
           defaultDate={new Date()}
           defaultView="month"
