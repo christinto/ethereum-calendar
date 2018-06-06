@@ -8,6 +8,7 @@ import Calendar from "react-big-calendar";
 import moment from "moment";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import Collapsible from 'react-collapsible';
 //import logo from "../../ethereumlogo.svg";
 
 Calendar.setLocalizer(Calendar.momentLocalizer(moment));
@@ -23,37 +24,39 @@ class Home extends Component {
           </div>
 
           <div className="pure-u-1-1">
-            <h2>Active Account</h2>
-            <AccountData accountIndex="0" units="ether" precision="2" />
+            <Collapsible trigger="Active Account Info">
+              <AccountData accountIndex="0" units="ether" precision="2" />
 
-            <br/><br/>
+              <br/><br/>
+
+              <p><strong>Calendar events count</strong>: <ContractData contract="Calendar" method="getCalendarEventsCount" /></p>
+
+              <br/><br/>
+            </Collapsible>
           </div>
 
           <div className="pure-u-1-1">
-            <p><strong>Calendar events count</strong>: <ContractData contract="Calendar" method="getCalendarEventsCount" /></p>
+            <Collapsible trigger="Add Event to Calendar">
+              <EventForm contract="Calendar" method="createNewCalendarEvent" labels={['Title', 'Start', 'End', 'Description']}/>
 
-            <br/><br/>
+              <br/><br/>
+            </Collapsible>
           </div>
 
           <div className="pure-u-1-1">
-            <h2>Add Event to Calendar</h2>
-            <EventForm contract="Calendar" method="createNewCalendarEvent" labels={['Title', 'Start', 'End', 'Description']}/>
+            <Collapsible trigger="Update Calendar Event">
+              <EventForm contract="Calendar" method="updateCalendarEvent" labels={['id', 'Title', 'Start', 'End', 'Description']}/>
 
-            <br/><br/>
+              <br/><br/>
+            </Collapsible>
           </div>
 
           <div className="pure-u-1-1">
-            <h2>Update Calendar Event</h2>
-            <EventForm contract="Calendar" method="updateCalendarEvent" labels={['id', 'Title', 'Start', 'End', 'Description']}/>
+            <Collapsible trigger="Delete Calendar Event">
+              <ContractForm contract="Calendar" method="deleteCalendarEvent" labels={['id']}/>
 
-            <br/><br/>
-          </div>
-
-          <div className="pure-u-1-1">
-            <h2>Delete Calendar Event</h2>
-            <ContractForm contract="Calendar" method="deleteCalendarEvent" labels={['id']}/>
-
-            <br/><br/>
+              <br/><br/>
+            </Collapsible>
           </div>
 
           <div className="pure-u-1-1">
