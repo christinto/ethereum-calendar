@@ -17,45 +17,39 @@ class Home extends Component {
       <main className="container">
         <div className="pure-g">
           <div className="pure-u-1-1 header">
-            <h1 className="App-title">Ethereum Calendar</h1>
+            <h1 className="App-title">Calendar</h1>
           </div>
 
-          <div className="pure-u-1-1">
+          <div className="pure-u-1-4">
             <Collapsible trigger="Active Account Info">
               <AccountData accountIndex="0" units="ether" precision="2" />
-
-              <br/><br/>
-
               <p><strong>Calendar events count</strong>: <ContractData contract="Calendar" method="getCalendarEventsCount" /></p>
-
-              <br/><br/>
             </Collapsible>
           </div>
 
-          <div className="pure-u-1-1">
+          <div className="pure-u-1-4">
             <Collapsible trigger="Add Event to Calendar">
               <EventForm contract="Calendar" method="createNewCalendarEvent" labels={['Title', 'Start', 'End', 'Description']}/>
 
-              <br/><br/>
             </Collapsible>
           </div>
 
-          <div className="pure-u-1-1">
+          <div className="pure-u-1-4">
             <Collapsible trigger="Update Calendar Event">
               <EventForm contract="Calendar" method="updateCalendarEvent" labels={['id', 'Title', 'Start', 'End', 'Description']}/>
 
-              <br/><br/>
+
             </Collapsible>
           </div>
 
-          <div className="pure-u-1-1">
+          <div className="pure-u-1-4">
             <Collapsible trigger="Delete Calendar Event">
               <ContractForm contract="Calendar" method="deleteCalendarEvent" labels={['id']}/>
 
-              <br/><br/>
+
             </Collapsible>
           </div>
-
+          <br/><br/>
           <div className="pure-u-1-1">
             <EventsList />
 

@@ -3,6 +3,7 @@
 body,
 .pure-g [class*=pure-u] {
   font-family: 'Open Sans', sans-serif;
+  background-color: #bf42f4;
 }
 
 .header {
@@ -22,9 +23,10 @@ code {
 .container {
   box-sizing: border-box;
   width: calc(100% - 60px);
-  max-width: 600px;
+  max-width: 1200px;
   padding: 45px 20px;
   margin: 0 auto;
+  background-color: #bf42f4;
 }
 
 .pure-button-primary {
@@ -107,4 +109,82 @@ ul li:not(:last-child) {
   color: darkgreen;
   background: darkseagreen;
   border: 1px solid darkgreen;
+}
+
+/* COLLAPSIBLE */
+
+
+.Collapsible {
+  background-color: #CBB700;
+}
+
+
+
+.Collapsible__contentInner {
+  padding: 10px;
+  border: 1px solid $lightGrey;
+  border-top: 0;
+
+  p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+.Collapsible__trigger {
+  display: block;
+  font-weight: 400;
+  text-decoration: none;
+  color: $grey;
+  position: relative;
+  border: 1px solid white;
+  padding: 10px;
+  background: $cyan;
+  color: white;
+
+
+  &:after {
+    font-family: 'FontAwesome';
+    content: '\f107';
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: block;
+    transition: transform 300ms;
+  }
+
+  &.is-open {
+    &:after {
+      transform: rotateZ(180deg);
+    }
+  }
+
+  &.is-disabled {
+    opacity: 0.5;
+    background-color: grey;
+  }
+}
+
+.CustomTriggerCSS {
+  background-color: lightcoral;
+  transition: background-color 200ms ease;
+
+
+}
+
+.CustomTriggerCSS--open {
+  background-color: darkslateblue;
+}
+
+.Collapsible__custom-sibling {
+  padding: 5px;
+  font-size: 12px;
+  background-color: #CBB700;
+  color: black;
 }
