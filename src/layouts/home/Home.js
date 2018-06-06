@@ -3,13 +3,10 @@ import { AccountData, ContractForm, ContractData } from 'drizzle-react-component
 import EventsList from '../../components/EventsListContainer'
 import EventForm from '../../components/EventFormContainer'
 
-
 import Calendar from "react-big-calendar";
 import moment from "moment";
 
-import "react-big-calendar/lib/css/react-big-calendar.css";
 import Collapsible from 'react-collapsible';
-//import logo from "../../ethereumlogo.svg";
 
 Calendar.setLocalizer(Calendar.momentLocalizer(moment));
 
