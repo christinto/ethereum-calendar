@@ -17,6 +17,7 @@ class EventsList extends Component {
     // Fetch initial values of event ids array from chain and return cache key for reactive updates.
     this.calendarEventsListDataKey = this.contracts.Calendar.methods.getAllCalendarEvents.cacheCall(...[]);
 
+
   }
 
   render() {
