@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CalendarContainer from './CalendarContainer'
+import { drizzleConnect } from 'drizzle-react'
 
 /*
  * Create component.
@@ -51,4 +52,10 @@ EventsList.contextTypes = {
   drizzle: PropTypes.object
 }
 
-export default EventsList;
+const mapStateToProps = state => {
+  return {
+    contracts: state.contracts
+  }
+}
+
+export default drizzleConnect(EventsList, mapStateToProps);

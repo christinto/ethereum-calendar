@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { AccountData, ContractForm, ContractData } from 'drizzle-react-components'
-import EventsList from '../../components/EventsListContainer'
-import EventForm from '../../components/EventFormContainer'
+import EventsList from '../../components/EventsList'
+import EventForm from '../../components/EventForm'
 
 import Calendar from "react-big-calendar";
 import moment from "moment";
@@ -12,6 +12,8 @@ import ethereumlogo from '../../ethereumlogo.svg';
 Calendar.setLocalizer(Calendar.momentLocalizer(moment));
 
 class Home extends Component {
+
+
 
   render() {
     return (

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { drizzleConnect } from 'drizzle-react'
 
 /*
  * Create component.
@@ -116,4 +117,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default EventForm;
+export default drizzleConnect(EventForm, mapStateToProps);
