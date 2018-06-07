@@ -7,6 +7,7 @@ import Calendar from "react-big-calendar";
 import moment from "moment";
 
 import Collapsible from 'react-collapsible';
+import ethereumlogo from '../../ethereumlogo.svg';
 
 Calendar.setLocalizer(Calendar.momentLocalizer(moment));
 
@@ -17,7 +18,7 @@ class Home extends Component {
       <main className="container">
         <div className="pure-g">
           <div className="pure-u-1-1 header">
-            <h1 className="App-title">Calendar</h1>
+            <img src={ethereumlogo} className="logo" alt="logo" /><h1 className="title">Blockchain Powered Calendar</h1>
           </div>
 
           <div className="pure-u-1-4">
@@ -49,7 +50,7 @@ class Home extends Component {
 
             </Collapsible>
           </div>
-          <br/><br/>
+          <br/><br/><br/>
           <div className="pure-u-1-1">
             <EventsList />
 

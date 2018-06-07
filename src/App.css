@@ -3,16 +3,38 @@
 body,
 .pure-g [class*=pure-u] {
   font-family: 'Open Sans', sans-serif;
-  background-color: #bf42f4;
 }
 
 .header {
   text-align: center;
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
 }
 
 h1, h2, h3 {
   font-family: 'Oswald', 'Arial Narrow', sans-serif;
 }
+
+.logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.title {
+  font-size: 1.5em;
+}
+
+.intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 
 code {
   padding: .25rem;
@@ -26,7 +48,6 @@ code {
   max-width: 1200px;
   padding: 45px 20px;
   margin: 0 auto;
-  background-color: #bf42f4;
 }
 
 .pure-button-primary {
@@ -111,11 +132,8 @@ ul li:not(:last-child) {
   border: 1px solid darkgreen;
 }
 
-/* COLLAPSIBLE */
-
-
 .Collapsible {
-  background-color: #CBB700;
+  background-color: #adadad;
 }
 
 

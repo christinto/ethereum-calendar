@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Calendar from "react-big-calendar";
 import moment from "moment";
+import { drizzleConnect } from 'drizzle-react'
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 //import logo from "../../ethereumlogo.svg";
@@ -85,4 +86,10 @@ CalendarContainer.contextTypes = {
   drizzle: PropTypes.object
 }
 
-export default CalendarContainer;
+const mapStateToProps = state => {
+  return {
+    contracts: state.contracts
+  }
+}
+
+export default drizzleConnect(CalendarContainer, mapStateToProps);

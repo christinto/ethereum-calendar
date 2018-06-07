@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import CalendarContainer from './CalendarContainerContainer'
+import CalendarContainer from './CalendarContainer'
 
 /*
  * Create component.
